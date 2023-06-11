@@ -34,13 +34,16 @@ export default function Nav() {
                 <a href="/api/auth/login" className='rounded-md border bg-purple-100 px-2 mr-2 py-3 ml-2'>Login as Vendor</a>
               ) : (
                 <>
-                <img src={user.picture} alt="" className='rounded-full w-8 h-8 ml-2'/>
-                <span className='ml-2 mr-2'>
-                  {user.name}
-                </span>
-                <a href="api/auth/logout" className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
-                  Logout
-                </a>
+                  <img src={user.picture} alt="" className='rounded-full w-8 h-8 ml-2'/>
+                  <span className='ml-2 mr-2'>
+                    {user.name}
+                  </span>
+                  <a href="manage-shops" className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
+                    Manage Shops
+                  </a>
+                  <a href="api/auth/logout" className='rounded-md border bg-purple-100 px-2 py-3 mr-2'>
+                    Logout
+                  </a>
                 </>
               )
             }

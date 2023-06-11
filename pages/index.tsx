@@ -21,7 +21,6 @@ query {
 
 const Home = () => {
   const x = useQuery(GET_PRODUCTS)
-  console.log('xxxxxxx', x)
   const { data, loading } = useQuery(GET_PRODUCTS)
   if (loading) return (<p>Loading...</p>)
   return (<ProductList products={data.getAllProducts.data} /> )
