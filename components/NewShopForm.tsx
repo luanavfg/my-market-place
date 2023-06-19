@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { gql } from '@apollo/client/core';
+import { gql } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import { httpLink, setAuthToken } from '../gqlClient';
 
 

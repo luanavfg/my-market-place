@@ -1,10 +1,7 @@
 import Link from 'next/link'
-
+import { useUser } from '@auth0/nextjs-auth0'
 const navLinkStyle = `cursor-pointer inline-flex items-center px-1 pt-1 text-gray-500 hover:text-indigo-400`
-
 const iconButtonStyle = `flex bg-white p-2 rounded-full text-gray-400 hover:text-indigo-400 border-2 border-gray-500 hover:border-indigo-400`
-
-import { useUser } from '@auth0/nextjs-auth0/client';
 
 export default function Nav() {
   const {isLoading, user} = useUser()
@@ -31,10 +28,10 @@ export default function Nav() {
             </Link>
             {
               !user ? (
-                <a href="/api/auth/login" className='rounded-md border bg-purple-100 px-2 mr-2 py-3 ml-2'>Login as Vendor</a>
+                <Link href="/api/auth/login" className='rounded-md border bg-purple-100 px-2 mr-2 py-3 ml-2'>Login as Vendor</Link>
               ) : (
                 <>
-                  <img src={user.picture} alt="" className='rounded-full w-8 h-8 ml-2'/>
+                  {user.picture && <img src={user.picture} alt="" className='rounded-full w-8 h-8 ml-2'/>}
                   <span className='ml-2 mr-2'>
                     {user.name}
                   </span>
