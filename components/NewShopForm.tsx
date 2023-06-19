@@ -17,7 +17,6 @@ const CREATE_SHOP = gql`
       description: $description
       coverImg: $coverImg
       ownerId: $ownerId
-      products: []
     }) {
       _id
       name
