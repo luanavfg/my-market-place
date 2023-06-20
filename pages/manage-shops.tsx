@@ -23,7 +23,7 @@ export default function ManageShops(props: any) {
   const  x = useQuery(GET_SHOPS_BY_OWNER, {
     variables: { ownerId: user?.sub }
   })
-  console.log('xxxxx', x)
+
   return (
     <>
       <NewShopForm accessToken={props.accessToken}/>

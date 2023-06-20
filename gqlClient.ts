@@ -28,6 +28,7 @@ export const setAuthToken = (token: string) => setContext((_,
   }))
 
 export const client = new ApolloClient({
+  // ssrMode: typeof window === 'undefined',
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
