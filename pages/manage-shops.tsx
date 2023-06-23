@@ -20,16 +20,13 @@ export default function ManageShops(props: any) {
   const { data } = useQuery(GET_SHOPS_BY_OWNER, {
     variables: { ownerId: user?.sub }
   })
-  const  x = useQuery(GET_SHOPS_BY_OWNER, {
-    variables: { ownerId: user?.sub }
-  })
 
   return (
     <>
       <NewShopForm accessToken={props.accessToken}/>
       {
         data ? (
-          <ShopList shops={data.getShopsByOwnerID.data}/>
+          <ShopList shops={data.getShopsByOwnerID.data} accessToken={props.accessToken}/>
         ) : (
           <div>Loading...</div>
         )

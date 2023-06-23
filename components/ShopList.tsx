@@ -1,6 +1,16 @@
 import Link from "next/link";
+import { useMutation, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client/core";
+import { httpLink, setAuthToken } from "../gqlClient";
 
-export default function ShopsList({ shops }: { shops: any }) {
+const DELETE_SHOP = gql`
+  mutation DeleteShopAndProducts($shopId: ID!) {
+    deleteShopAndProducts(shopId: $shopId)
+  }
+`
+
+export default function ShopsList({ shops, accessToken }: { shops: any, accessToken: string }) {
+    const [deleteShop, {client, data}] = useMutation(DELETE_SHOP);
 
     return (
       <div className="p-16">
@@ -13,7 +23,22 @@ export default function ShopsList({ shops }: { shops: any }) {
                   <Link href={`shops/${shop._id}/details`} className="underline p-1">{shop.name}</Link>
                   <div>
                     <Link href={`shops/${shop._id}/products`} className={btnClass}>Add Product</Link>
-                    <button className={deleteBtn}>Delete Shop</button>
+                    <button 
+                      className={deleteBtn}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        client.setLink(
+                          setAuthToken(
+                            accessToken
+                          ).concat(httpLink)
+                        )
+                        deleteShop({variables:
+                        { shopId: shop._id }}).then(
+                          () => {window.location.reload()}
+                        );
+                      }}>
+                        Delete Shop
+                    </button>
                   </div>
                 </li>
               </ul>
