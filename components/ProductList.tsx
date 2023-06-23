@@ -13,7 +13,7 @@ const ProductList = ({ products }: { products: any[] } ) => {
   }
   
   const ProductItem = ({ product } : { product: any }) => (
-    <a href="#" className="group">
+    <div className="group">
       <div className={itemContainer}>
         <img src={product.imageUrl ? product.imageUrl : "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"} className={imageStyle} alt=""/>
       </div>
@@ -23,7 +23,8 @@ const ProductList = ({ products }: { products: any[] } ) => {
       <p className="mt-1 text-lg font-medium text-gray-900">
         $ {product.price}
       </p>
-    </a>
+      <button className="p-2 bg-indigo-200 rounded">Add to cart</button>
+    </div>
   )
   
   
