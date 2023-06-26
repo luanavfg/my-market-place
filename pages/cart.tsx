@@ -55,9 +55,8 @@ export default function Cart () {
               }),
             })
             .then(response => response.json())
-            .then(response => {
-              console.log(response);
-              window.location.href = response.session.url;
+            .then(data => {
+              window.location.href = data.session.url;
             })
           }}
           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium pointer text-white"
